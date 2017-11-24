@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:background="@drawable/background"
+    tools:context="com.example.user10.keerat.activity.activity.MobileOrEmailActivity">
+
+
+
+
+            <TextView
+                android:id="@+id/tv_regi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Register As A"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:layout_marginTop="114dp"
+                android:gravity="center"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"/>
+
+    <Spinner
+        android:id="@+id/sp_cat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/venguru_array"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="20dp"
+        android:padding="16dp"
+        android:background="@drawable/drop_down_style"
+        android:paddingLeft="22dp"
+        android:paddingRight="22dp"/>
+
+
+
+
+
+
+
+
+
+
+</LinearLayout>
