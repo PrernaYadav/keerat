@@ -15,7 +15,7 @@ import java.util.Calendar;
  * Created by designer on 11/23/2017.
  */
 
-public class DatePickerFragment1 extends DialogFragment
+public class DatePickerFragment1 extends android.support.v4.app.DialogFragment
         implements DatePickerDialog.OnDateSetListener {
 
     @Override
@@ -32,7 +32,7 @@ public class DatePickerFragment1 extends DialogFragment
 
     public void onDateSet(DatePicker view, int year, int month, int day) {
         // Do something with the date chosen by the user
-        TextView textView= (TextView) getActivity().findViewById(R.id.tv_hall_date);
+        TextView textView= (TextView) getActivity().findViewById(R.id.tv_langar_date);
         textView.setText(+view.getDayOfMonth()+"/"+view.getMonth()+"/"+view.getYear());
 
     }

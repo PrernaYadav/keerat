@@ -17,6 +17,9 @@ public class SelectCategoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_category);
 
+
+
+
         spinner_1 = (Spinner)findViewById(R.id.spinner1);
         spinner_2 = (Spinner)findViewById(R.id.spinner2);
 

@@ -1,12 +1,12 @@
 package com.example.user10.keerat.activity.activity;
 
 import android.app.Activity;
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Typeface;
 import android.support.annotation.IdRes;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
@@ -15,7 +15,6 @@ import android.util.Base64;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
-import android.view.ViewTreeObserver;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -26,6 +25,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -36,12 +36,17 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.user10.keerat.R;
 import com.example.user10.keerat.activity.Class.ConfigInfo;
+import com.example.user10.keerat.activity.utils.DatePickerFragment;
+import com.example.user10.keerat.activity.utils.DatePickerFragment1;
 import com.example.user10.keerat.activity.utils.DatePickerFragment2;
+import com.example.user10.keerat.activity.utils.DatePickerFragment3;
+import com.example.user10.keerat.activity.utils.DatePickerFragment4;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 /*import com.example.user10.keerat.activity.dynamiceditfield.MyLayoutOperation;
@@ -1356,7 +1361,7 @@ public class RegisterServiceGurudwaraSahib extends AppCompatActivity {
             "Ystradgynlais",
             "Ystalyfera", "Zurich", "Geneva", "Lucerne", "Grenchen", "Bettlach", "Lengnau", "Pieterlen", "Huttwil", "Langenthal", "Lotzwil", "Murgenthal", "Roggwil", "Butzberg", "Bannwil", "Wynau", "Leukerbad", "Zermatt", "Visp", "Brig", "Glis", "Naters", "Saas-Fee", "Matzendorf", "Oensingen", "Egerkingen", "Holderbank", "Wolfwil", "Attiswil", "Oberbipp", "Balsthal", "Mumliswil", "Wiedlisbach", "Welschenrohr", "Mohlin", "Niederbipp", "Bern", "Gumligen", "Muri bei Bern", "Kirchberg", "Hindelbank", "Wasen", "Burgdorf", "Lyssach", "Oberburg", "Ersigen", "Kernenried", "Kirchberg", "Belp", "Munsingen", "Rubigen", "Toffen", "Aarberg", "Seedorf", "Herzogenbuchsee", "Oberonz", "Rheinfelden", "Therwil", "Basel", "Oberwil", "Binningen", "Bottmingen", "Pratteln", "Oberdorf", "Oberdorf", "Zeglingen", "Wegenstetten", "Gelterkinden", "Reinach", "Seltisberg", "Kaiseraugst", "Wallisellen", "Dubendorf", "Collombey", "Bouveret", "Martigny-Ville", "Basse-Nendaz", "Saxon", "Monthey", "Riddes", "Arlesheim", "Onex", "Doettingen", "Bariswil", "Lausanne", "Breitenbach", "Thayngen", "Uhwiesen", "Reinach", "Biel/Bienne", "Pully", "Sachseln", "Zizers", "Cazis", "Chur", "Steinhausen", "Ebnat-Kappel", "Meyrin", "Hunenberg", "Giubiasco", "Laufen", "Frauenfeld", "Affoltern am Albis", "Pfaeffikon", "Kriens", "Yverdon-les-Bains", "Rueti", "Wetzikon", "Mendrisio", "Stabio", "Vevey", "Orbe", "Baar", "Uster", "Trimbach", "Appenzell", "Fallanden", "Fribourg", "Diessenhofen", "Sulgen", "Kreuzlingen", "Schonholzerswilen", "Schaffhausen", "Bulach", "Winterthur", "Au", "Massagno", "Lugano", "Rotkreuz", "Bernex", "St. Gallen", "Nidau", "Carouge", "Wil", "Neuenhof", "Viganello", "Renens", "Eysins", "Nyon", "Prilly", "Aigle", "Sarnen", "Chene-Bourg", "Bern / Liebefeld", "Erlenbach", "Hochdorf", "Entlebuch", "Unterageri", "Dielsdorf", "Sissach", "Wettingen", "Deitingen", "Hergiswil", "Rupperswil", "Forel", "Muri", "Turbenthal", "Laupen", "Chiasso", "Riva San Vitale", "Cadro", "Banco", "Melide", "Chene-Bougeries", "Solothurn", "Augst", "Oberschlatt", "Beinwil", "Rorschach", "Baretswil", "Lenzburg", "Oberlunkhofen", "Villigen", "Zaziwil", "Hagneck", "Schanis", "Autigny", "DÃ¼dingen", "Menziken", "Frutigen", "Bassersdorf", "Nurensdorf", "Ruschlikon", "Mannedorf", "Tenero", "Blonay", "Weinfelden", "Wabern", "Wurenlos", "Oberentfelden", "Jona", "Kronbuhl", "Goldach", "Daettlikon", "Schlieren", "Montreux", "Dornach", "Peseux", "Allschwil", "Marin", "Rumlang", "Horw", "Saint-Sulpice", "Munchenstein", "Emmenbruecke", "Veyrier", "Liestal", "Klingnau", "Dottikon", "Windisch", "Dietikon", "Gland", "Celigny", "Gingins", "Coppet", "Crassier", "Kriegstetten", "Derendingen", "Subingen", "Lohn", "Munchenbuchsee", "Urtenen", "Schonbuhl", "Richenthal", "Nussbaumen", "Wollerau", "Lachen", "Merenschwand", "Bonstetten", "Kuesnacht", "Thun", "Courtion", "Berikon", "Nunningen", "Kloten", "Fischingen", "Baden", "Bioggio", "Siebnen", "Gummenen", "Bex", "Rorbas", "Embrach", "Wittenbach", "Teufen AR", "Morschwil", "Oftringen", "Cointrin", "Regensdorf", "La Chaux-de-Fonds", "Neuchatel", "Horgen", "Richterswil", "Oberweningen", "Lucens", "Moudon", "Thierachern", "Heimberg", "Zollikofen", "Wadenswil", "Pregassona", "Wikon", "Strengelbach", "Hagendorf", "Olten", "Aarau", "Volketswil", "Crissier", "Corgemont", "Bellevue", "Vernier", "Versoix", "Plan-les-Ouates", "Samstagern", "Pfaeffikon", "Vullierens", "Ecublens", "Niederrohrdorf", "Fehraltorf", "Ausser-Dinhard", "Bussigny", "Romanel", "Saint-Prex", "Tegerfelden", "Untersiggenthal", "Nussbaumen", "Birr", "Wurenlingen", "Endingen", "Turgi", "Habsburg", "Kirchdorf", "Holderbank", "Gebenstorf", "Birmenstorf", "Brugg", "Seewis im Pratigau", "Tamins", "Seengen", "Wohlen", "Egliswil", "Nanikon", "Meisterschwanden", "Bruttisellen", "Flums", "Untervaz", "Domat", "Haldenstein", "Wangs", "Greifensee", "Bassecourt", "Malleray", "Bevilard", "Rapperswil", "Eschenbach", "Roche", "Chatel-Saint-Denis", "Buchs / Buchs (Dorf)", "Bellinzona", "Belmont-sur-Lausanne", "Zollikon", "Le Locle", "Altdorf", "Courtepin", "Lamboing", "La Neuveville", "Wileroltigen", "Speicher", "Vacallo", "Mettmenstetten", "Nottwil", "Sursee", "Mauensee", "Avenches", "Couvet", "Zofingen", "Heerbrugg", "Berneck", "Ermatingen", "Tagerwilen", "Holstein", "Magden", "Colombier", "Cornaux", "Preles", "DelÃ©mont", "Minusio", "Langnau am Albis", "Herisau", "Frick", "Ober Urdorf", "Murten", "Vesenaz", "Rickenbach", "Zug", "Feuerthalen", "Huntwangen", "Wagenhausen", "Biberist", "Morges", "Chardonne", "Le Mont-sur-Lausanne", "Gossau", "Grueningen", "KÃ¼ttigen", "Troistorrents", "Villars-sur-Glane", "Gstaad", "Sempach", "Unterengstringen", "Cadempino", "Locarno", "Tann", "Berlikon", "Hinwil", "Weiningen", "Meilen", "Oberengstringen", "Stettlen", "Illnau", "KÃ¼ssnacht", "Elsau-Raeterschen", "Hinterkappelen", "Losone", "Oetwil / Oetwil an der Limmat", "Cham", "Vandoeuvres", "Morigen", "Bristen", "Willisau", "Beromuenster", "Moutier", "Hunibach", "Schmitten", "Ueberstorf", "Albligen", "Schwarzenburg", "KÃ¶niz", "Puidoux", "Cully", "Chexbres", "Payerne", "Rolle", "Gottlieben", "Romanshorn", "Steckborn", "Confignon", "Niederuzwil", "Oberuzwil", "Otelfingen", "Andwil", "Hettlingen", "Elgg", "Glattfelden", "Thalwil", "Rudolfstetten", "Oberbuchsiten", "Lostorf", "Ecuvillens", "Avry", "Neyruz", "GruyÃ¨res", "Grandvillard", "Treyvaux", "Domdidier", "Faoug", "Broc", "Dompierre", "Ependes", "Opfikon", "Henggart", "Zell", "Russikon", "Seuzach Dorf", "Hagenbuch", "Pfungen", "Aadorf", "Weisslingen", "Gravesano", "Morbio Inferiore", "Morcote", "Littau", "Schachen", "Dattwil", "Courrendlin", "Courroux", "Coeuve", "Chambesy", "Bach", "Granges", "Apples", "Cudrefin", "Kempttal", "Oberembrach", "Reconvilier", "Saint-Imier", "Cortaillod", "Boudry", "Bevaix", "Fontainemelon", "Grandson", "Estavayer-le-Lac", "Champagne", "Bolligen", "Worblaufen", "Jegenstorf", "Ostermundigen", "Adliswil", "Kilchberg", "Steffisburg", "Spiez", "Einigen", "Durnten", "Hergiswil", "Kastanienbaum", "Alpnach", "Seegraben", "Monchaltorf", "Ebikon", "Aeugst am Albis", "Mettmenstetten", "Stallikon", "Rondchatel", "Schenkon", "Eich", "Oberkirch", "Weggis", "Emmen", "Wiesendangen", "Roschenz", "Birmensdorf", "Herrliberg", "Hombrechtikon", "Feldmeilen", "Stafa", "Oetwil am See", "Uerikon", "Uetikon", "Glattburg", "Villars-sur-Ollon", "Altstatten", "Arbon", "Buix", "Courtemaiche", "Courgenay", "Courtedoux", "Riedholz", "Zuchwil", "Gerlafingen", "Batterkinden", "Obergerlafingen", "Yvonand", "Saint-Maurice", "Val d'Illiez", "Vionnaz", "Villeneuve", "Ayent", "Erde", "Sion", "Bramois", "Sierre", "Vetroz", "Grimisuat", "Saint-Leonard", "Ayer", "Ossingen", "Le Landeron", "Altenrhein", "Abtwil", "Evilard", "Tramelan", "Orvin", "Villeret", "Neftenbach", "Niederweningen", "Koblenz", "Leibstadt", "Bad Zurzach", "Rekingen", "Porrentruy", "Court", "Wangen", "Buchs", "Bremgarten", "Eggenwil", "Lutry", "Ormalingen", "Mellingen", "Hagglingen", "Hendschiken", "Trimmis", "Arosa", "Cheseaux-sur-Lausanne", "Uzwil", "Unterehrendingen", "Saignelegier", "Frenkendorf", "Unterlunkhofen", "Jonen", "Les Breuleux", "Hermetschwil-Staffeln", "Oberwil", "Moriken", "Reigoldswil", "Waldenburg", "Oberglatt", "Thonex", "Eschlikon", "Stein", "Kaisten", "Laufenburg", "Hofstetten", "Travers", "Wahlen", "Cottens", "Lausen", "Brutten", "Rothrist", "Ã‰challens", "Wald", "Sainte-Croix", "Bubikon", "Gossau", "Neunkirch", "Flaach", "Uitikon", "Niederurnen", "Uetendorf", "Brenzikofen", "Killwangen", "Kehrsatz", "Sementina", "Bottens", "Gunten", "Habkern", "Rafz", "Aarburg", "Muhlau", "Davos", "Schoetz", "KÃ¼nten", "Schnottwil", "Saviese", "Conthey", "Arbaz", "Nax", "Evionnaz", "Grone", "Montana", "Martigny-Croix", "Chalais", "Granges-pres-Sion", "Champsec", "Champex", "Sembrancher", "Verbier", "Chippis", "Vercorin", "Fully", "Charrat-les-Chenes", "DÃ¼rrenroth", "Russin", "Prangins", "Fulenbach", "Burglen", "Rechthalten", "Charmey", "Niederhallwil", "Le Grand-Saconnex", "Balerna", "Hitzkirch", "Winkel", "Spreitenbach", "Termen", "Munster", "Oberhelfenschwil", "Stansstad", "Obfelden", "Muhen", "Hirzel-Kirche", "Rheineck", "Wolhusen", "Neuheim", "Root", "Meierskappel", "Werthenstein", "Neuenkirch", "Brunnen", "Ottenbach", "Walchwil", "Kappel", "Vuadens", "Romont", "Bulle", "Riaz", "Marsens", "Siviriez", "Chavannes-les-Forts", "Hauteville", "Maur", "Zumikon", "Egg", "Lignieres", "Saint-Blaise", "Hauterive", "EnnetbÃ¼rgen", "Giswil", "Thierrens", "Epalinges", "Wangi", "Bazenheid", "Cremines", "Muhleberg", "Bavois", "Aubonne", "Gimel", "Grandval", "Pery", "Les Genevez", "Lurtigen", "Lyss", "Saint-Livres", "Meinisberg", "Lenzerheide", "Langnau", "Gwatt", "Rikon / Rikon (Dorfkern)", "Beringen", "Flurlingen", "Buch", "Schlatt", "Trasadingen", "Kappel", "Portalban- Dessous", "Schwyz", "Kerns", "Enney", "Cugy", "Kefikon", "Le Vaud", "Savigny", "Daniken", "Meggen", "Bangerten", "Le Cret", "Hauptwil", "Himmelried", "Bissegg", "Preverenges", "Paudex", "Worben", "Busswil", "Bosingen", "Liebistorf", "Tafers", "Cordast", "Heitenried", "Ferenbalm", "Schubelbach", "Ascona", "Berg", "Rickenbach", "Heimiswil", "Agno", "Erlach", "Freienbach", "Safenwil", "Kerzers", "Ins", "Siselen", "Altendorf", "Reichenburg", "Ziegelbrucke", "Bilten", "Kallnach", "Unteriberg", "La Tour-de-Peilz", "Bettingen", "Villmergen", "Corcelles", "Arisdorf", "Fullinsdorf", "Nafels", "Mollis", "Hundwil", "Uznach", "Sankt Gallenkappel", "Ennenda", "Fahrwangen", "Blumenstein", "Einsiedeln", "Rothenthurm", "Corcelles", "Sariswil", "Thorishaus", "Niederlenz", "Wildegg", "Staufen", "Stadel", "Airolo", "Netstal", "Glarus", "Goslikon", "Sarmenstorf", "La Chiesaz", "Yvorne", "Vouvry", "Burglen", "Schindellegi", "Kolliken", "Lungern", "Inwil", "Felsberg", "Kaiserstuhl", "Alt-Bachs", "Siglistorf", "Chavannes", "Bottenwil", "Brittnau", "Vordemwald", "Villars", "Cossonay", "Densbueren", "Courtelary", "Niedergosgen", "Erschwil", "Quartino", "Saint-Cergue", "Chavannes de Bogis", "Tesserete", "Interlaken", "Benken", "Suhr", "Sonvico", "Udligenswil", "Pfeffikon", "Sigriswil", "DÃ¤rligen", "Buchs", "Muttenz", "Caslano", "Stein", "Othmarsingen", "Zuzgen", "Canobbio", "Stans", "Buochs", "Dallenwil", "Wolfenschiessen", "Beckenried", "Buren nid dem Bach", "BrÃ¼gg", "Zuzwil", "Neukirch", "Amriswil", "Horn", "Novazzano", "Magadino", "Gordola", "Matzingen", "Ellikon an der Thur", "Melano", "Zwingen", "Gunzgen", "Ricken", "Adligenswil", "Steinen", "Grosswangen", "Rueggisberg", "Aeschau", "Schinznach Dorf", "Obergosgen", "Untererlinsbach", "Seon", "Villnachern", "Founex", "Jussy", "Oron-la-ville", "Arth", "Aesch", "Worb", "Cressier", "Gryon", "Ruswil", "Weesen", "Wangen", "Flamatt", "Amsoldingen", "Effretikon", "Waldstatt", "Bonnefontaine", "Le Bry", "Bellerive", "Vex", "Veytaux", "Epautheyres", "Rothenbach", "Schoftland", "Nesslau", "Rebstein", "Schattdorf", "Grancy", "Zuckenriet", "Hoerstetten", "Essertines-sur-Rolle", "L'Abbaye", "Biere", "Vernayaz", "Feldbach", "Chapelle", "Villaz-Saint-Pierre", "Birsfelden", "Oberhofen bei Etzgen", "Vaulruz", "Steg", "Vallorbe", "Alterswil", "Niederbuchsiten", "Munchwilen", "L'Isle", "Plaffeien", "Sins", "Buttes", "Mumpf", "Soyhieres", "Gampelen", "Kiesen", "Davos Platz", "Vauderens", "Chamoson", "Ovronnaz", "Froideville", "Felben", "Neu-Rheinau", "Lenk", "Territet", "Leutwil", "Oberrieden", "Oberstocken", "Bubendorf", "Veltheim", "Grandcour", "Tuggen", "Saint-Aubin-Sauges", "Les Verrieres", "Wattwil", "Rhazuns", "Contone", "Brissago", "Neuhausen", "Tauffelen", "Sankt Margrethen", "Chatelaine", "Vicques", "Eschenbach", "Cernier", "Hildisrieden", "Degersheim", "Dardagny", "Morschach", "Malters", "Buchrain", "Fluehli", "Buttisholz", "Hellbuehl", "Schuepfheim", "Cartigny", "Rue", "Begnins", "Coppet", "La Plaine", "Graenichen", "Maggia", "Rossens", "Busserach", "Grindelwald", "Basadingen", "Dachsen", "Eglisau", "Rudlingen", "Buchberg", "Stein am Rhein", "Nohl", "Hemmental", "Ramsen", "Grabs", "Mels", "Lienz", "Au", "Sargans", "Balgach", "Sevelen", "Sennwald", "Cressier", "Thielle", "Gachlingen", "Erlen", "Diepoldsau", "Bad Ragaz", "Daillens", "Rohrbach", "Muolen", "Gipf-Oberfrick", "Islikon", "Wauwil", "Freidorf", "Schonenwerd", "Niedererlinsbach", "Wittnau", "Thalheim", "Auenstein", "Schafisheim", "Moosleerau", "Teufenthal", "Unterkulm", "Gontenschwil", "Reiden", "Dagmersellen", "Ibach", "Fischenthal", "Tavannes", "Hornussen", "Vinzel", "Klosters Serneus", "Furstenaubruck", "Wolfgang", "Cheyres", "Rohr", "Hofstetten", "Bachenbulach", "Thundorf", "Pfaffnau", "Corsier", "Le Noirmont", "Montagnola", "Gandria", "Selzach", "Biel-Benken", "Landquart", "Arni", "Auvernier", "Schonenberg", "Bauma", "Gordevio", "Iragna", "Durrenasch", "Oberegg", "Hittnau", "Boll", "Campfer", "Obersaxen", "Dombresson", "Sottens", "Oberdiessbach", "Langnau", "Geuensee", "Utzenstorf", "Sezegnin", "Koppigen", "Bonaduz", "Chateau-d'Oex", "Corminboeuf", "Les Pommerats", "Ligerz", "Trubschachen", "Oberhofen", "Miecourt", "Courtetelle", "La Chaux", "Gampel", "Ilanz", "Bellmund", "Emmetten", "Grund", "Flims", "Waldhaus", "Laax", "Igis", "Luvis", "Weiningen", "Brislach", "Buren an der Aare", "Belfaux", "Attalens", "Palezieux", "La Sarraz", "Wil", "Bronschhofen", "Hausen", "La Roche", "Ballwil", "Goldau", "Sorengo", "Agra", "Concise", "Eiken", "Beuson", "Scuol", "Diegten", "Wangen an der Aare", "Schonenbuch", "Orsonnens", "Bigenthal", "Baulmes", "Ettingen", "Aettenschwil", "Wigoltingen", "Hilterfingen", "Kaltbrunn", "Chez-le-Bart", "Unter-Teufen", "Wichtrach", "Adelboden", "Wimmis", "Saanenmoser", "Gommiswald", "Klosters Platz", "Davos Dorf", "Eggersriet", "BÃ¼hler", "Oberriet", "Ruthi", "Eichberg", "Camorino", "Pampigny", "Yens", "Auw", "Onnens", "Kleinlutzel", "Seftigen", "Grolley", "Weissbad", "Kradolf", "Mettendorf", "Stettfurt", "Matt", "Assens", "Bursins", "Morgins", "Flawil", "Full", "Sirnach", "Saint-Aubin", "Muotathal", "Satigny", "Vilters", "Guttingen", "Altishofen", "Schongau", "Vitznau", "Sattel", "Attinghausen", "Novaggio", "Buonas", "Bogis-Bossey", "Alchenstorf", "Noreaz", "Buus", "Anieres", "Alberswil", "Immensee", "Givrins", "Borex", "Meinier", "Henau", "Hausen am Albis / Hausen (Dorf)", "Claro", "Lodrino", "Waldkirch", "Richigen", "Arogno", "Glaris", "Maschwanden", "Schmerikon", "Euthal", "Orpund", "Zollbruck", "Sulz", "Hochwald", "Gersau", "Bottighofen", "Walzenhausen", "Egnach", "Heiden", "Maerstetten-Dorf", "Mullheim", "Grono", "Sarn", "Tasch", "Les Hauts-Geneveys", "Tanay", "Niederburen", "Lutisburg", "Mosnang", "Maisprach", "Amden", "Arzier", "Gelfingen", "Aristau", "Schleitheim", "Semsales", "Porsel", "Gerzensee", "Niederscherli", "Ingenbohl", "Courfaivre", "Aesch", "Gais", "Lichtensteig", "Pfeffingen", "Rueyres", "Colombier", "Diessbach", "Goldiwil", "Fraubrunnen", "Messen", "Konolfingen", "Triengen", "Castione", "Krauchthal", "Ursenbach", "Chene-Paquier", "Sonvilier", "Fleurier", "Lenz", "LÃ¼tzelflÃ¼h", "Langenbruck", "Uerkheim", "Cadenazzo", "Cassina d'Agno", "Trubbach", "Thalheim", "Schmitten", "Schwellbrunn", "Gettnau", "Maroggia", "Altnau", "Roggwil", "Oberwangen", "Trogen", "Chavornay", "Vuiteboeuf", "Rances", "Romainmotier", "Le Brassus", "Ardon", "Leysin", "Jonschwil", "Engelberg", "Biasca", "Capolago", "Manno", "Feldbrunnen", "Unterseen", "Twann", "Arzo", "Burchen", "Merishausen", "UrnÃ¤sch", "Balterswil", "Menzingen", "Iserables", "Bissone", "Glion", "Melchnau", "Mettlen", "Buetschwil", "Zihlschlacht", "Ried", "Bitsch", "Les Geneveys-sur-Coffrane", "Pfyn", "Riggisberg", "Bigorio", "Zeihen", "Roveredo", "Arbedo", "Chesieres", "Schiers", "Seedorf", "Erstfeld", "Hasle", "Felsenau", "Kollbrunn", "Eggiwil", "Rehetobel", "Genestrerio", "Grellingen", "Oberbalm", "Gerlikon", "Barbereche", "Schinznach Bad", "Cugnasco", "Wila", "Iseo", "Schwarzenberg", "Pura", "Waltenschwil", "Rapperswil", "Gnosca", "Perroy", "Chancy", "Liddes", "Grimentz", "Seelisberg", "Schonried", "Greppen", "Thusis", "Saanen", "Zullwil", "Sils-Segl Maria", "Celerina", "Raperswilen", "Feusisberg", "Sonceboz", "Salmsach", "Ittenthal", "Laufelfingen", "Lauerz", "Les Acacias", "Le Sentier", "Herdern", "Gonten", "Andermatt", "Stoos", "Zunzgen", "Niederhelfenschwil", "Wuppenau", "Lommis", "Ganterschwil", "Wilderswil", "Ringgenberg", "Brienz", "Bonigen", "Meiringen", "Walkringen", "Ufhusen", "Zell", "Ouchy", "Villa", "Apro", "Finhaut", "Allaman", "Saint-Sulpice", "Motiers", "Winterberg", "Lindau", "Schupfen", "Perlen", "Arcegno", "Kulm", "Tschuggen", "Trun", "Wolfhalden", "Savognin", "Ulrichen", "Lauenen", "Sumiswald", "Cheiry", "Vessy", "Hunzenschwil", "Dozwil", "Montet", "Wengen", "Raron", "Verscio", "Flueli", "Rufi", "Hermance", "Saas-Grund", "Jenaz", "Loco", "Roemerswil", "Aeschlen ob Gunten", "Escholzmatt", "Ferden", "Herbetswil", "Grossandelfingen", "MÃ¼hlehorn", "Muerren", "Zufikon", "Obervaz", "Rifferswil", "Les Diablerets", "Brusino Arsizio", "Sessa"
     };
-    private  String gurudwara, address, cityy, statee, countryy, pincode, contact, yourName, yourContact, yourEmail, designation, about, picture, langar, langarPlace, langarAddress, langarCity, langarstate, langarcountry, langarPincode, langarDate, langarRemarks, aid, aidPlace, aidAddress, aidCity, aidState, aidCountry, aidPincode, aidDate, aidremarks, hall, hallPlace, hallAddress, hallCity, hallState, hallCountry, hallPincode, hallDate, hallRemarks;
+    private  String gurudwara, address, cityy, statee, countryy, pincode, contact, yourName, yourContact, yourEmail, designation, about, picture, langar, langarPlace, langarAddress, langarCity, langarstate, langarcountry, langarPincode, langarDate, langarRemarks, aid, aidPlace, aidAddress, aidCity, aidState, aidCountry, aidPincode, aidDate, aidremarks, hall, hallPlace, hallAddress, hallCity, hallState, hallCountry, hallPincode, hallDate, hallRemarks,langartime,aidtime,halltime;
     private Spinner spcountry, spstate, spcity, spcountry2, spstate2, spcity2, spdesiganation, sptimetovisit, spdailyfixedprogram;
     private Button btnaddmore1, btnaddmore2, btnSubmit,btnpicture;
     private EditText etgurudwaraname, etaddress, etgrdcontact,
@@ -1365,12 +1370,13 @@ public class RegisterServiceGurudwaraSahib extends AppCompatActivity {
             etotherdetails, etprogram2, etdateandtiming2, etotherdetails2,etlangerremark,etaidremark,langaradd,langarpin,ethallremark,aidadd,aidpin,halladd,hallpin;
     private RadioGroup rgserverfreefood, rgsameplace, rgserverfreeaid, rgsameplaceaid, rgserverfreehall, rgsameplacehall, rgweeklyprogram, rgmonthlyprogram;
     private LinearLayout llsameplace, lladd, llsameplaceaid, lladdaid, llsameplacehall, lladdhall;
-    private TextView tvupdatecal,tvlangerdate,tvaiddate,tvhalldate;
+    private TextView tvupdatecal,tvlangertime,tvlangerdate,tvaidtime,tvhalltime,tvaiddate,tvhalldate;
     private RadioButton rby1, rbn1, rby2, rbn2, rby3, rbn3, rby4, rbn4;
     private AutoCompleteTextView atcountryy, atstatee, atcityy, atcountryy2, atstatee2, atcityy2,atcountryaid,atstateaid,atcityaid,atcountryhall,atstatehall,atcityhall;
     private Bitmap bitmap;
     private String encodedResume,mailid;
     private static final int REQUEST_CODE_JOB = 1;
+    private int mHour,mMinute;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -1379,6 +1385,9 @@ public class RegisterServiceGurudwaraSahib extends AppCompatActivity {
 
 
         tvlangerdate=(TextView)findViewById(R.id.tv_langar_date);
+        tvlangertime=(TextView)findViewById(R.id.tv_langar_time);
+        tvaidtime=(TextView)findViewById(R.id.tv_aid_time);
+        tvhalltime=(TextView)findViewById(R.id.tv_hall_time);
         etlangerremark=(EditText) findViewById(R.id.et_langar_remarks);
         etaidremark=(EditText) findViewById(R.id.et_aid_remarks);
         tvaiddate=(TextView)findViewById(R.id.tv_aid_date);
@@ -1758,6 +1767,79 @@ public class RegisterServiceGurudwaraSahib extends AppCompatActivity {
             }
         });
 
+        tvlangertime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Get Current Time
+                final Calendar c = Calendar.getInstance();
+                mHour = c.get(Calendar.HOUR_OF_DAY);
+                mMinute = c.get(Calendar.MINUTE);
+
+                // Launch Time Picker Dialog
+                TimePickerDialog timePickerDialog = new TimePickerDialog(RegisterServiceGurudwaraSahib.this,
+                        new TimePickerDialog.OnTimeSetListener() {
+
+                            @Override
+                            public void onTimeSet(TimePicker view, int hourOfDay,
+                                                  int minute) {
+
+                                tvlangertime.setText(hourOfDay + ":" + minute);
+                            }
+                        }, mHour, mMinute, false);
+                timePickerDialog.show();
+            }
+
+        });
+
+
+        tvaidtime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Get Current Time
+                final Calendar c = Calendar.getInstance();
+                mHour = c.get(Calendar.HOUR_OF_DAY);
+                mMinute = c.get(Calendar.MINUTE);
+
+                // Launch Time Picker Dialog
+                TimePickerDialog timePickerDialog = new TimePickerDialog(RegisterServiceGurudwaraSahib.this,
+                        new TimePickerDialog.OnTimeSetListener() {
+
+                            @Override
+                            public void onTimeSet(TimePicker view, int hourOfDay,
+                                                  int minute) {
+
+                                tvaidtime.setText(hourOfDay + ":" + minute);
+                            }
+                        }, mHour, mMinute, false);
+                timePickerDialog.show();
+            }
+
+        });
+
+        tvhalltime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Get Current Time
+                final Calendar c = Calendar.getInstance();
+                mHour = c.get(Calendar.HOUR_OF_DAY);
+                mMinute = c.get(Calendar.MINUTE);
+
+                // Launch Time Picker Dialog
+                TimePickerDialog timePickerDialog = new TimePickerDialog(RegisterServiceGurudwaraSahib.this,
+                        new TimePickerDialog.OnTimeSetListener() {
+
+                            @Override
+                            public void onTimeSet(TimePicker view, int hourOfDay,
+                                                  int minute) {
+
+                                tvhalltime.setText(hourOfDay + ":" + minute);
+                            }
+                        }, mHour, mMinute, false);
+                timePickerDialog.show();
+            }
+
+        });
+
     }
 
     @Override
@@ -1774,18 +1856,20 @@ public class RegisterServiceGurudwaraSahib extends AppCompatActivity {
         newFragment.show(getSupportFragmentManager(), "datePicker");
     }
     public void showDatePickerDialog4(View v) {
-        DialogFragment newFragment = new DatePickerFragment2();
+        DialogFragment newFragment = new DatePickerFragment4();
         newFragment.show(getSupportFragmentManager(), "datePicker");
     }
     public void showDatePickerDialog1(View v) {
-        DialogFragment newFragment = new DatePickerFragment2();
+        DialogFragment newFragment = new DatePickerFragment3();
         newFragment.show(getSupportFragmentManager(), "datePicker");
     }
 
     public void showDatePickerDialog3(View v) {
-        DialogFragment newFragment = new DatePickerFragment2();
+        DialogFragment newFragment = new DatePickerFragment1();
         newFragment.show(getSupportFragmentManager(), "datePicker");
     }
+//        newFragment.show(getSupportFragmentManager(), "TimePicker");
+
 
 
     public void submitData() {
@@ -1825,6 +1909,9 @@ public class RegisterServiceGurudwaraSahib extends AppCompatActivity {
                 hallPincode=hallpin.getText().toString();
                 hallDate=tvhalldate.getText().toString();
                 hallRemarks=ethallremark.getText().toString();
+                langartime=tvlangertime.getText().toString();
+                aidtime=tvaidtime.getText().toString();
+                halltime=tvhalltime.getText().toString();
 
 
 
@@ -1858,7 +1945,7 @@ public class RegisterServiceGurudwaraSahib extends AppCompatActivity {
                 params.put("state", statee);
                 params.put("country", countryy);
                 params.put("pincode", pincode);
-                params.put("user_login", "user");
+                params.put("user_login", "mailid");
                 params.put("contact_no", contact);
                 params.put("your_name", yourName);
                 params.put("your_contact", yourContact);
@@ -1893,6 +1980,9 @@ public class RegisterServiceGurudwaraSahib extends AppCompatActivity {
                 params.put("hall_date", hallDate);
                 params.put("hall_remark", hallRemarks);
                 params.put("hall_add", hallAddress);
+                params.put("langer_time", langartime);
+                params.put("aid_time", aidtime);
+                params.put("hall_time", halltime);
 
                 Log.e(",.,.,.,.,.,.,", "" + params);
                 return params;

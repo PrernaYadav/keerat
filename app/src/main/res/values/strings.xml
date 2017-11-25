@@ -22,6 +22,13 @@ Societies, etc.</string>
     <string name="newuser">New User</string>
     <string name="termcondition">Term and Conditions</string>
 
+
+    //navigation
+
+
+    <string name="booknow">Book Now</string>
+    <string name="view">View</string>
+
     //signup
 
     <string name="setemail">Set Email</string>
@@ -302,5 +309,6 @@ As Per Cities/States.</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+
 
 </resources>

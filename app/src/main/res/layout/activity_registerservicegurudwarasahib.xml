@@ -541,6 +541,19 @@
         android:textColor="#fe7a47"
         android:textSize="14sp" />
 
+    <TextView
+        android:id="@+id/tv_langar_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_edittext"
+        android:padding="15dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="20dp"
+        android:text="Select Time"
+        android:textColor="#fe7a47"
+        android:textSize="14sp" />
+
     <EditText
         android:id="@+id/et_langar_remarks"
         android:layout_width="match_parent"
@@ -804,6 +817,18 @@
                     android:layout_marginRight="30dp"
                     android:layout_marginTop="20dp"
                     android:text="Select date"
+                    android:textColor="#fe7a47"
+                    android:textSize="14sp" />
+                <TextView
+                    android:id="@+id/tv_aid_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_edittext"
+                    android:padding="15dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Select Time"
                     android:textColor="#fe7a47"
                     android:textSize="14sp" />
 
@@ -1070,6 +1095,18 @@
                     android:layout_marginRight="30dp"
                     android:layout_marginTop="20dp"
                     android:text="Select date"
+                    android:textColor="#fe7a47"
+                    android:textSize="14sp" />
+                <TextView
+                    android:id="@+id/tv_hall_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_edittext"
+                    android:padding="15dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Select Time"
                     android:textColor="#fe7a47"
                     android:textSize="14sp" />
 
